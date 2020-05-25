@@ -16,4 +16,11 @@ public class StuServiceimpl implements StuService {
         List<Student> students = studentMapper.getStuList();
         return students;
     }
+
+    @Override
+    public void addStu(Student student) {
+        studentMapper.addStu(student);
+    }
+
+
 }

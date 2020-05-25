@@ -12,10 +12,16 @@ import java.util.List;
 public class StuController {
     @Autowired
     private StuServiceimpl stuService;
-    @RequestMapping("/stu")
-    public String check(Model model){
+    @RequestMapping("/getstu")
+    public String getstu(Model model){
         List<Student> students = stuService.getStuList();
         model.addAttribute("stu",students.get(0).getName());
-        return "stu";
+        return "getstu";
     }
+    @RequestMapping("/addstu")
+    public String addstu(Student student){
+        stuService.addStu(student);
+        return "addstu";
+    }
+
 }
