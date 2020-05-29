@@ -1,4 +1,4 @@
-package cource.auto_read;
+package cource.auto_read.Database;
 
 import javabean.Student;
 import org.apache.ibatis.annotations.Insert;

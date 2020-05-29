@@ -1,7 +1,5 @@
-package cource.auto_read;
+package cource.auto_read.Database;
 
-import cource.auto_read.StuService;
-import cource.auto_read.StudentMapper;
 import javabean.Student;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;

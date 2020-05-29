@@ -1,5 +1,6 @@
 package cource.auto_read;
 
+import cource.auto_read.Database.StuServiceimpl;
 import javabean.Student;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -23,5 +24,4 @@ public class StuController {
         stuService.addStu(student);
         return "addstu";
     }
-
 }
