@@ -86,7 +86,11 @@
             <artifactId>ant</artifactId>
             <version>1.10.8</version>
         </dependency>
-
+        <dependency>
+            <groupId>commons-codec</groupId>
+            <artifactId>commons-codec</artifactId>
+            <version>1.14</version>
+        </dependency>
 
     </dependencies>
 
