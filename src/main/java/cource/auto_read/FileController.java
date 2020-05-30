@@ -14,7 +14,7 @@ import java.nio.file.Paths;
 
 @Controller
 public class FileController {
-    private static final String UPLOADED_FOLDER = "C:\\Users\\wawade3\\Documents\\";
+    private static final String UPLOADED_FOLDER = "E:\\coding\\auto_read\\";
     @RequestMapping("/update")
     public String update(){
         return "update";

@@ -1,10 +1,60 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org">
+<html xmlns:th="http://www.thymeleaf.org"  lang="zh-CN">
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!--<link href="bootstrap-3.3.7-dist/css/bootstrap.min.css" rel="stylesheet">-->
+    <link rel="stylesheet" href="http://cdn.bootcss.com/bootstrap/3.3.0/css/bootstrap.min.css">
+    <title>上传答题卡</title>
+    <style type="text/css">
+        .button_3 {
+            width: 80%;
+            height: 100px;
+            margin-top: 10%;
+        }
+        .start{
+            margin-top: 10%;
+        }
+        button{
+            width: 33%;
+            height: 100%;
+        }
+    </style>
+
+</head>
 <body>
-<h1>Spring Boot file upload example</h1>
-<form method="POST" action="/upload" enctype="multipart/form-data">
-    <input type="file" name="file" /><br/><br/>
-    <input type="submit" value="Submit" />
-</form>
+<div class="container">
+    <h1 class="text-center">在线阅卷系统</h1>
+    <form method="POST" action="/upload" enctype="multipart/form-data">
+        <div class="container-fluid center-block button_3">
+            <button type="button" class="btn btn-default btn-lg">
+                <input type="file" name="file" value="点击上传试卷"/>
+            </button>
+
+            <a href="answer.html">
+                <button type="button" class="btn btn-default btn-lg">
+                    填写标准答案
+                </button>
+            </a>
+
+            <a href="answer.html">
+                <button type="button" class="btn btn-default btn-lg">
+                    下载答题卡
+                </button>
+            </a>
+        </div>
+        <button type="button" class="btn btn-default btn-lg center-block start">
+            开始评卷
+        </button>
+    </form>
+</div>
+
+<script src="https://cdn.staticfile.org/jquery/1.10.2/jquery.min.js"></script>
+<script src="http://cdn.bootcss.com/bootstrap/3.3.0/js/bootstrap.min.js"></script>
+<script>
+    console.log('123');
+    $(function () {
+        console.log('1234')
+    });
+</script>
 </body>
 </html>
