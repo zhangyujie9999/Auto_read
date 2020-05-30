@@ -91,7 +91,17 @@
             <artifactId>commons-codec</artifactId>
             <version>1.14</version>
         </dependency>
-
+        <!-- 引入org.json所需依赖 -->
+        <dependency>
+            <groupId>org.json</groupId>
+            <artifactId>json</artifactId>
+            <version>20160810</version>
+        </dependency>
+        <dependency>
+            <groupId>com.baidu.aip</groupId>
+            <artifactId>java-sdk</artifactId>
+            <version>4.12.0</version>
+        </dependency>
     </dependencies>
 
     <build>
