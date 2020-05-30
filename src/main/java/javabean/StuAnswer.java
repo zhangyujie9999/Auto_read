@@ -25,6 +25,12 @@ public class StuAnswer {
         return answer;
     }
 
+    public StuAnswer(int ID, String type, String answer) {
+        this.ID = ID;
+        Type = type;
+        this.answer = answer;
+    }
+
     public void setAnswer(String answer) {
         this.answer = answer;
     }

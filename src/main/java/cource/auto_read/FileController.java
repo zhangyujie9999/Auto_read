@@ -1,5 +1,6 @@
 package cource.auto_read;
 
+import Algorithm.Unzip;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartException;
@@ -34,7 +35,7 @@ public class FileController {
 
             redirectAttributes.addFlashAttribute("message",
                     "You successfully uploaded '" + file.getOriginalFilename() + "'");
-
+            Unzip.unZip(UPLOADED_FOLDER + file.getOriginalFilename());
         } catch (IOException e) {
             e.printStackTrace();
         }
