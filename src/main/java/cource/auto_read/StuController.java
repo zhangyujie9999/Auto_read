@@ -29,6 +29,7 @@ public class StuController {
     @RequestMapping("/addstu")
     public String addstu(Student student){
         stuService.addStu(student);
+        System.out.println("tt");
         return "addstu";
     }
 
