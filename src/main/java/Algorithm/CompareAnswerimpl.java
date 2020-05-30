@@ -28,7 +28,7 @@ public class CompareAnswerimpl implements CompareAnswer{
         // 短文本相似度
         JSONObject res = client.simnet(text1, text2, options);
         String s=res.toString(0);
-        String a=s.substring(s.indexOf("e")+3,s.indexOf("t")-2);
+        String a=s.substring(s.indexOf("e")+3,s.indexOf("t")-3);
         double score=Double.parseDouble(a);
         //System.out.println(a);
         return score;
