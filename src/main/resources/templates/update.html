@@ -4,7 +4,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <!--<link href="bootstrap-3.3.7-dist/css/bootstrap.min.css" rel="stylesheet">-->
     <link rel="stylesheet" href="http://cdn.bootcss.com/bootstrap/3.3.0/css/bootstrap.min.css">
-    <title>上传答题卡</title>
+    <title>阅卷结果</title>
     <style type="text/css">
         .button_3 {
             width: 80%;
@@ -18,6 +18,9 @@
             width: 33%;
             height: 100%;
         }
+        h1{
+            margin-top: 10%;
+        }
     </style>
 
 </head>
@@ -30,21 +33,23 @@
                 <input type="file" name="file" value="点击上传试卷"/>
             </button>
 
-            <a href="answer.html">
+            <a href="result.html">
                 <button type="button" class="btn btn-default btn-lg">
                     填写标准答案
                 </button>
             </a>
 
-            <a href="answer.html">
+            <a href="result.html">
                 <button type="button" class="btn btn-default btn-lg">
                     下载答题卡
                 </button>
             </a>
         </div>
-        <button type="button" class="btn btn-default btn-lg center-block start">
-            开始评卷
-        </button>
+        <a href="result.html">
+            <button type="button" class="btn btn-default btn-lg center-block start">
+                开始评卷
+            </button>
+        </a>
     </form>
 </div>
 

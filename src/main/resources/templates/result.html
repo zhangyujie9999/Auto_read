@@ -9,14 +9,30 @@
 <body>
 <div class="container">
     <h1>答题卡</h1>
+    <table class="table table-bordered">
+        <tr>
+            <th>姓名</th>
+            <th>第一题</th>
+            <th>第二题</th>
+            <th>第三题</th>
+        </tr>
+    </table>
 </div>
 
 <script src="https://cdn.staticfile.org/jquery/1.10.2/jquery.min.js"></script>
 <script src="http://cdn.bootcss.com/bootstrap/3.3.0/js/bootstrap.min.js"></script>
 <script>
-    console.log('123');
-    $(function () {
-        console.log('1234')
+    var data_list = {'a':[10,20,30],
+    'b':[10,20,30],
+    'c':[10,20,30]};
+    $.each(data_list,function(i,item){
+        console.log(item.length);
+        var td = $("<tr></tr>");
+        td.append("<td class=\"icon\">" + i + "</td>");
+        for (var i=0;i<item.length; i++) {
+            td.append("<td class=\"icon\">" + item[i] + "</td>");
+        }
+        $('.table').append(td);
     });
 </script>
 </body>

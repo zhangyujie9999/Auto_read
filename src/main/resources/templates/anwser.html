@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="http://cdn.bootcss.com/bootstrap/3.3.0/css/bootstrap.min.css">
+    <title>上传答题卡</title>
+    <style>
+        input{
+            display: inline;
+            width: 100px;
+            height: 50px;
+        }
+    </style>
+</head>
+<body>
+<div class="container">
+    <h3>一、选择题</h3>
+    <div class="block"></div>
+    <span><p>每题分值</p><input type="text"></span>
+    <h3>二、填空题</h3>
+    <div class="block"></div>
+    <span><p>每题分值</p><input type="text"></span>
+</div>
+
+<script src="https://cdn.staticfile.org/jquery/1.10.2/jquery.min.js"></script>
+<script src="http://cdn.bootcss.com/bootstrap/3.3.0/js/bootstrap.min.js"></script>
+<script>
+    console.log('123');
+    for (var i=0; i<10; i++){
+        $('.block').append('<span><input type="text"></span>');
+    }
+
+</script>
+</body>
+</html>
