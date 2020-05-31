@@ -11,6 +11,7 @@ import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
+import java.util.List;
 
 @Controller
 public class FileController {
@@ -54,9 +55,18 @@ public class FileController {
     public String uploadStatus(){
         return "uploadStatus";
     }
+    @RequestMapping("/answer")
+    public String answer(){
 
-    @RequestMapping("/update")
-    public String anwser(){
-        return "anwser";
+        return "answer";
     }
+    @PostMapping("/backanswer")
+    public String backanswer(@RequestParam("answer") List<String> answer){
+        System.out.println("test");
+        return "answer";
+    }
+//    @RequestMapping("/update")
+//    public String anwser(){
+//        return "anwser";
+//    }
 }

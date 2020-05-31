@@ -24,9 +24,10 @@
 </head>
 <body>
 <div class="container">
+    <form method="POST" action="/backanswer" enctype="multipart/form-data">
     <h3>一、选择题</h3>
     <div class="block"></div>
-    <div class="score"><input type="text" placeholder="每题分值"></div>
+    <div class="score"><input type="text" name = "answer" placeholder="每题分值"></div>
 
     <h3>二、判断题</h3>
     <div class="block"></div>
@@ -38,19 +39,20 @@
 
     <h3>四、简答题</h3>
     <div>
-        <textarea rows="3" cols="120">
+        <textarea rows="3" cols="120"  name = "answer" >
         DHT11 数字温湿度传感器是一款含有已校准数字信号输出的温湿度复合传感器。 它应用专用的数字模块采集技术和温湿度传感技术。
         </textarea><br>
-        <span class="score"><input type="text" placeholder="关键词"></span>
+        <span class="score"><input type="text" placeholder="关键词"  name = "answer" ></span>
         <span class="score"><input type="text" placeholder="关键词"></span>
         <span class="score"><input type="text" placeholder="关键词"></span>
     </div>
     <div class="button center-block">
         <button type="button" class="btn btn-primary btn-lg">清空</button>
-        <button type="button" class="btn btn-primary btn-lg">保存</button>
+<!--        <button type="button" class="btn btn-primary btn-lg">保存</button>-->
+        <button type="submit" class="btn btn-primary btn-lg">保存</button>
         <button type="button" class="btn btn-primary btn-lg">返回</button>
     </div>
-
+    </form>
 </div>
 <div style="margin-top: 100px">
 
@@ -61,7 +63,7 @@
 <script>
     console.log('123');
     for (var i=0; i<10; i++){
-        $('.block').append('<span><input type="text"></span>');
+        $('.block').append('<span><input type="text" name = "answer"></span>');
     }
 </script>
 </body>
