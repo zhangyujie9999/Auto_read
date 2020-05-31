@@ -54,4 +54,9 @@ public class FileController {
     public String uploadStatus(){
         return "uploadStatus";
     }
+
+    @RequestMapping("/update")
+    public String anwser(){
+        return "anwser";
+    }
 }
