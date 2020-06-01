@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"  lang="zh-CN">
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!--<link href="bootstrap-3.3.7-dist/css/bootstrap.min.css" rel="stylesheet">-->
+    <link rel="stylesheet" href="http://cdn.bootcss.com/bootstrap/3.3.0/css/bootstrap.min.css">
+    <title>答题卡</title>
+</head>
+<body>
+<div class="container">
+    <h1>答题卡</h1>
+    <table class="table table-bordered">
+        <tr>
+            <th>姓名</th>
+            <th>第一题</th>
+            <th>第二题</th>
+            <th>第三题</th>
+        </tr>
+    </table>
+</div>
+
+<script src="https://cdn.staticfile.org/jquery/1.10.2/jquery.min.js"></script>
+<script src="http://cdn.bootcss.com/bootstrap/3.3.0/js/bootstrap.min.js"></script>
+<script>
+    var data_list = {'a':[10,20,30],
+    'b':[10,20,30],
+    'c':[10,20,30]};
+    $.each(data_list,function(i,item){
+        console.log(item.length);
+        var td = $("<tr></tr>");
+        td.append("<td class=\"icon\">" + i + "</td>");
+        for (var i=0;i<item.length; i++) {
+            td.append("<td class=\"icon\">" + item[i] + "</td>");
+        }
+        $('.table').append(td);
+    });
+</script>
+</body>
+</html>
