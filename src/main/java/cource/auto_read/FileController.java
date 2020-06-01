@@ -7,11 +7,15 @@ import org.springframework.web.multipart.MultipartException;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 @Controller
 public class FileController {
@@ -20,12 +24,37 @@ public class FileController {
     public String update(){
         return "update";
     }
+//    ----------
+
+    @RequestMapping("/uploadFile")
+    public Object batchImport(@RequestParam("filename") MultipartFile file, String account) throws IOException {
+        Map map = new HashMap();
+        int flag = 0;
+        //判断文件是否为空
+        if(file==null){
+            map.put("flag",flag);
+            map.put("msg","文件为空！");
+            return map;
+        }
+        //获取文件名
+        String fileName=file.getOriginalFilename();
+        System.out.println(fileName);
+        //批量导入
+        map.put("flag",1);
+        map.put("msg","成功插入条数据！");
+        return map;
+    }
+
+//    ---------
+
     @PostMapping("/upload")
     public String singleFileUpload(@RequestParam("file") MultipartFile file,
-                                   RedirectAttributes redirectAttributes) {
+                                   RedirectAttributes redirectAttributes) throws InterruptedException {
+        System.out.println(file);
+//        Thread.sleep(5000);
         if (file.isEmpty()) {
             redirectAttributes.addFlashAttribute("message", "Please select a file to upload");
-            return "redirect:uploadStatus";
+            return "redirect:update";
         }
 
         try {
@@ -40,7 +69,7 @@ public class FileController {
         } catch (IOException e) {
             e.printStackTrace();
         }
-        return "redirect:/uploadStatus";
+        return "redirect:/update";
     }
     @ControllerAdvice
     public class GlobalExceptionHandler {
@@ -48,7 +77,7 @@ public class FileController {
         @ExceptionHandler(MultipartException.class)
         public String handleError1(MultipartException e, RedirectAttributes redirectAttributes) {
             redirectAttributes.addFlashAttribute("message", e.getCause().getMessage());
-            return "redirect:/uploadStatus";
+            return "redirect:/update";
         }
     }
     @RequestMapping("/uploadStatus")
@@ -57,7 +86,6 @@ public class FileController {
     }
     @RequestMapping("/answer")
     public String answer(){
-
         return "answer";
     }
     @PostMapping("/backanswer")
@@ -65,6 +93,19 @@ public class FileController {
         System.out.println("test");
         return "answer";
     }
+    @RequestMapping("/result")
+    public String result(){
+        return "result";
+    }
+    @RequestMapping("/fail2update")
+    public String fail2update(){
+        return "update";
+    }
+    @RequestMapping("/answer2update")
+    public String answer2update(){
+        return "update";
+    }
+
 //    @RequestMapping("/update")
 //    public String anwser(){
 //        return "anwser";
