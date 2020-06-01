@@ -23,7 +23,7 @@ public class FileController {
     @Autowired
     AnsServiceimpl ansService;
     private static final String UPLOADED_FOLDER = "C:\\Users\\wawade3\\Documents\\";
-    @RequestMapping("/update")
+    @RequestMapping("")
     public String update(){
         return "update";
     }
