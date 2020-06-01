@@ -1,14 +1,15 @@
 package cource.auto_read;
 
 import Algorithm.Unzip;
+import cource.auto_read.Database.AnsServiceimpl;
+import javabean.Answer;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartException;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Path;
@@ -19,7 +20,9 @@ import java.util.Map;
 
 @Controller
 public class FileController {
-    private static final String UPLOADED_FOLDER = "E:\\coding\\auto_read\\";
+    @Autowired
+    AnsServiceimpl ansService;
+    private static final String UPLOADED_FOLDER = "C:\\Users\\wawade3\\Documents\\";
     @RequestMapping("/update")
     public String update(){
         return "update";
@@ -80,19 +83,6 @@ public class FileController {
             return "redirect:/update";
         }
     }
-    @RequestMapping("/uploadStatus")
-    public String uploadStatus(){
-        return "uploadStatus";
-    }
-    @RequestMapping("/answer")
-    public String answer(){
-        return "answer";
-    }
-    @PostMapping("/backanswer")
-    public String backanswer(@RequestParam("answer") List<String> answer){
-        System.out.println("test");
-        return "answer";
-    }
     @RequestMapping("/result")
     public String result(){
         return "result";
@@ -105,9 +95,8 @@ public class FileController {
     public String answer2update(){
         return "update";
     }
-
-//    @RequestMapping("/update")
-//    public String anwser(){
-//        return "anwser";
-//    }
+    @RequestMapping("/uploadStatus")
+    public String uploadStatus(){
+        return "uploadStatus";
+    }
 }
