@@ -309,33 +309,43 @@ public class WebOcr {
 		char [] str2 = str.toCharArray();
 		String str3="";
 		String[] str1 = {"","","","","","","","","","","","","","",""};
-		
-		
-		
 		int h=0;
 		int n=0;
+		int k=0;
+		int [] a = new int[100];
 		for(int i=0;i<str2.length;i++)
-		if(isdigit(str2[i]))
-		{
-			label:for(int j=i+1;j<str2.length;j++)
+			if(isdigit(str2[i]))
 			{
-				if(isdigit(str2[j]))
+				a[k++] = i;
+
+				label:for(int j=i+1;j<str2.length;j++)
 				{
-					h=j;
-					break label;
-					
+					if(isdigit(str2[j]))
+					{
+						h=j;
+						a[k++]=j;
+						break label;
+
+					}
 				}
-				
-				
-				
+
+
 			}
-		
-		str3=str.substring(i, h);
-		//System.out.println(str3);
-		str1[n++]=str3;
+		for(int i=0;i<k-1;)
+		{   a[i]=a[i]+1;
+			if(str2[a[i]]=='.'||str2[a[i]]=='、')
+				a[i]=a[i]+1;
+			str3=str.substring(a[i], a[i+1]);
+			str1[n++]=str3;
+			str3="";
+			i=i+2;
+
 		}
-		str3=str.substring(h);
+		str3=str.substring(a[k-1]+1);
 		str1[n++]=str3;
+//		System.out.println(n);
+//		System.out.println(str1[5]);
+
 		for(int i=0;i<n;i++)
 			{
 				if(str1[i] == null)
@@ -344,7 +354,7 @@ public class WebOcr {
 				this.type = "Tk";
 				this.ll.add(new StuAnswer(ID,this.type,this.answer));
 				ID++;
-				System.out.print(str1[i]);
+				System.out.print(str1[i]+" ");
 			}
 		
 	}
