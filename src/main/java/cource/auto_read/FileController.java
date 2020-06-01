@@ -57,7 +57,7 @@ public class FileController {
 //        Thread.sleep(5000);
         if (file.isEmpty()) {
             redirectAttributes.addFlashAttribute("message", "Please select a file to upload");
-            return "redirect:update";
+            return "redirect:";
         }
 
         try {
@@ -72,7 +72,7 @@ public class FileController {
         } catch (IOException e) {
             e.printStackTrace();
         }
-        return "redirect:/update";
+        return "redirect:";
     }
     @ControllerAdvice
     public class GlobalExceptionHandler {
@@ -80,7 +80,7 @@ public class FileController {
         @ExceptionHandler(MultipartException.class)
         public String handleError1(MultipartException e, RedirectAttributes redirectAttributes) {
             redirectAttributes.addFlashAttribute("message", e.getCause().getMessage());
-            return "redirect:/update";
+            return "redirect:";
         }
     }
     @RequestMapping("/result")
