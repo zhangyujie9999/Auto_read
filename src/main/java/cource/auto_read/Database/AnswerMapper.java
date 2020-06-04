@@ -1,6 +1,8 @@
+
 package cource.auto_read.Database;
 
 import javabean.Answer;
+import javabean.Student;
 import org.apache.ibatis.annotations.Select;
 import org.apache.ibatis.annotations.Update;
 import org.springframework.stereotype.Component;
@@ -17,4 +19,6 @@ public interface AnswerMapper {
 
     @Select("Select * from Answer where ID=#{ID}")
     List<Answer> findAnswer(int ID);
+    @Select("select * from Answer order by ID")
+    List<Answer> getAnsList();
 }
