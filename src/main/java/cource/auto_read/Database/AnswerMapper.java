@@ -17,8 +17,8 @@ public interface AnswerMapper {
             + "where ID = #{ID} ")
     void updateAnswer(Answer answer);
 
-    @Select("Select * from Answer where ID=#{ID}")
-    List<Answer> findAnswer(int ID);
+//    @Select("Select * from Answer where ID=#{ID}")
+//    List<Answer> findAnswer(int ID);
     @Select("select * from Answer order by ID")
     List<Answer> getAnsList();
 }
