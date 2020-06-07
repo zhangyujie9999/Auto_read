@@ -36,4 +36,11 @@ public class Answer {
         this.grade = grade;
     }
 
+    public Answer(int ID, String type, String answer, double grade) {
+        this.ID = ID;
+        this.type = type;
+        this.answer = answer;
+        this.grade = grade;
+    }
+
 }

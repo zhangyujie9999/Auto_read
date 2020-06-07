@@ -11,7 +11,7 @@ public class StuGradeServiceimpl implements StuGradeService{
     private StuGradeMapper stu_grademapper;
 
     @Override
-    public void addGrade(StuGrade s_grade){
+    public void addGrade(StuGrade s_grade) {
         stu_grademapper.addGrade(s_grade);
     }
 
