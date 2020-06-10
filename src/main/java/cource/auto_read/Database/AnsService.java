@@ -16,7 +16,9 @@ public interface AnsService {
     /**
      * 查找答案
      */
-    List<Answer> findAnswer(int ID);
+//    List<Answer> findAnswer(int ID);
+
+    List<Answer> getAnsList();
 
     List<Answer> getAnsList();
 

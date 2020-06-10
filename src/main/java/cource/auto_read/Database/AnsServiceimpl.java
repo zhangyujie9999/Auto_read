@@ -15,10 +15,16 @@ public class AnsServiceimpl implements AnsService {
         answerMapper.updateAnswer(answer);
     }
 
+//    @Override
+//    public List<Answer> findAnswer(int ID) {
+//        List<Answer> ans=answerMapper.findAnswer(ID);
+//        return ans;
+//    }
+
     @Override
-    public List<Answer> findAnswer(int ID) {
-        List<Answer> ans=answerMapper.findAnswer(ID);
-        return ans;
+    public List<Answer> getAnsList() {
+        List<Answer> answers = answerMapper.getAnsList();
+        return answers;
     }
 
     @Override

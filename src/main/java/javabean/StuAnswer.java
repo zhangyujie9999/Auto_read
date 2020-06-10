@@ -34,4 +34,6 @@ public class StuAnswer {
     public void setAnswer(String answer) {
         this.answer = answer;
     }
+
+
 }
