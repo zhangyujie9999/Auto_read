@@ -14,6 +14,5 @@ class CompareAnswerTest {
         double score=compareAnswerimpl.compare(stuAnswer,answer);
         System.out.println(score);
 
-
     }
 }

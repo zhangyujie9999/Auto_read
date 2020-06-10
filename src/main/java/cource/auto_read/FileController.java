@@ -22,7 +22,7 @@ import java.util.Map;
 public class FileController {
     @Autowired
     AnsServiceimpl ansService;
-    private static final String UPLOADED_FOLDER = "C:\\Users\\wawade3\\Documents\\";
+    private static final String UPLOADED_FOLDER = "E:\\coding\\auto_read\\";
     @RequestMapping("")
     public String update(){
         return "update";
