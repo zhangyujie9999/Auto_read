@@ -2,7 +2,6 @@ package cource.auto_read;
 
 import Algorithm.Unzip;
 import cource.auto_read.Database.AnsServiceimpl;
-import javabean.Answer;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
@@ -15,7 +14,6 @@ import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.util.HashMap;
-import java.util.List;
 import java.util.Map;
 
 @Controller
@@ -25,7 +23,7 @@ public class FileController {
     private static final String UPLOADED_FOLDER = "E:\\coding\\auto_read\\";
     @RequestMapping("")
     public String update(){
-        return "update";
+        return "homepage";
     }
 //    ----------
 
@@ -89,14 +87,15 @@ public class FileController {
     }
     @RequestMapping("/fail2update")
     public String fail2update(){
-        return "update";
+        return "homepage";
     }
     @RequestMapping("/answer2update")
     public String answer2update(){
-        return "update";
+        return "homepage";
     }
     @RequestMapping("/uploadStatus")
     public String uploadStatus(){
         return "uploadStatus";
     }
+
 }
