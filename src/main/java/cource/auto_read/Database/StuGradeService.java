@@ -18,7 +18,7 @@ public interface StuGradeService {
     /*
     返回指定学生成绩
     * */
-    List<StuGrade> selectGradebyID(int stu_ID);
+    List<StuGrade> selectGradebyID(String stu_ID);
 
     /*
     返回所有学生成绩

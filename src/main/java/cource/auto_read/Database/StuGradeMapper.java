@@ -28,7 +28,7 @@ public interface StuGradeMapper {
     void updateGrde(StuGrade s_grade);
 
     @Select("Select * from StuGrade where stu_ID=#{stu_ID} ")
-    List<StuGrade> selectGradebyID(int stu_ID);
+    List<StuGrade> selectGradebyID(String stu_ID);
 
     @Select("Select * from StuGrade order by stu_ID ")
     List<StuGrade> selectAllGrade();
