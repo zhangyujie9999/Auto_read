@@ -74,13 +74,9 @@
         <div class="score"><input type="text" name = "score" placeholder="每题分值"></div><br><br>
 
         <h3>四、简答题</h3>
+        <div class="block4"></div><br>
         <div>
-            <textarea rows="3" cols="120"  name = "answer" >
-            DHT11 数字温湿度传感器是一款含有已校准数字信号输出的温湿度复合传感器。 它应用专用的数字模块采集技术和温湿度传感技术。
-            </textarea><br>
-            <span class="score"><input type="text" placeholder="关键词"  name = "key" ></span>
-            <span class="score"><input type="text" placeholder="关键词" name = "key"></span>
-            <span class="score"><input type="text" placeholder="关键词" name = "key"></span>
+
             <br><div class="score"><input type="text" name = "score" placeholder="每题分值"></div>
         </div><br>
         <div class="float-right d-lg-block">
@@ -147,6 +143,24 @@
 <script src="https://cdn.staticfile.org/jquery/1.10.2/jquery.min.js"></script>
 <script src="http://cdn.bootcss.com/bootstrap/3.3.0/js/bootstrap.min.js"></script>
 <tr th:each="answer : ${answers}">
+    <script th:inline="javascript">
+        console.log('123');
+        //for (var i=0; i<10; i++){
+        if([[${answer.type}]] == "简答题")
+            $('.block4').append('<textarea rows="3" cols="120"  name = "answer" >\n' +
+                [[${answer.answer}]] +
+                '</textarea><br> \n' +
+                '<span class="score"><input type="text" placeholder="关键词"  name = "key" ></span>\n' +
+                '<span class="score"><input type="text" placeholder="关键词" name = "key"></span>\n' +
+                '<span class="score"><input type="text" placeholder="关键词" name = "key"></span>');
+        //$('input').attr('th:placeholder', '123')
+        //}
+        $('.reset').on('click', function () {
+            $("input").val("");
+        })
+    </script>
+</tr>
+<tr th:each="answer : ${answers}">
 <script th:inline="javascript">
     console.log('123');
     //for (var i=0; i<10; i++){
@@ -163,7 +177,7 @@
     <script th:inline="javascript">
         console.log('123');
         //for (var i=0; i<10; i++){
-        if([[${answer.type}]] == "判断题")
+        if([[${answer.type}]] == "填空题")
             $('.block2').append('<span><input type="text" name = "answer" th:text="" value=[[${answer.answer}]]></span>');
         //$('input').attr('th:placeholder', '123')
         //}
@@ -176,7 +190,7 @@
     <script th:inline="javascript">
         console.log('123');
         //for (var i=0; i<10; i++){
-        if([[${answer.type}]] == "填空题")
+        if([[${answer.type}]] == "判断题")
             $('.block3').append('<span><input type="text" name = "answer" th:text="" value=[[${answer.answer}]]></span>');
         //$('input').attr('th:placeholder', '123')
         //}

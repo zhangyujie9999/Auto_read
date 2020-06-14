@@ -1,5 +1,6 @@
 package cource.auto_read;
 
+import Algorithm.Read_allpic;
 import Algorithm.Unzip;
 import cource.auto_read.Database.AnsServiceimpl;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -14,13 +15,14 @@ import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 @Controller
 public class FileController {
     @Autowired
     AnsServiceimpl ansService;
-    private static final String UPLOADED_FOLDER = "E:\\coding\\auto_read\\";
+    private static final String UPLOADED_FOLDER = "/home/wawade3/下载/up/";
     @RequestMapping("")
     public String update(){
         return "homepage";
@@ -67,6 +69,10 @@ public class FileController {
             redirectAttributes.addFlashAttribute("message",
                     "You successfully uploaded '" + file.getOriginalFilename() + "'");
             Unzip.unZip(UPLOADED_FOLDER + file.getOriginalFilename());
+            String dirname = file.getOriginalFilename().substring(0,file.getOriginalFilename().length()-4);
+            List<String> piclist = Read_allpic.all_pic(UPLOADED_FOLDER + dirname);
+            System.out.println("aaa");
+
         } catch (IOException e) {
             e.printStackTrace();
         }

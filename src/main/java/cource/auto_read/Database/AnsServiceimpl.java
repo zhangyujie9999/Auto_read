@@ -27,11 +27,5 @@ public class AnsServiceimpl implements AnsService {
         return answers;
     }
 
-    @Override
-    public List<Answer> getAnsList() {
-        List<Answer> answers = answerMapper.getAnsList();
-        return answers;
-    }
-
 
 }

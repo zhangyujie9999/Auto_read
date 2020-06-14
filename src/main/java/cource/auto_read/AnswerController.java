@@ -26,7 +26,7 @@ public class AnswerController {
         System.out.println("test");
 
         int ID = 1;
-        for(int i = 0;i<10;i++)
+        for(int i = 0;i<40;i++)
         {
             String type = "选择题";
             String ans = answer.get(i);
@@ -34,7 +34,7 @@ public class AnswerController {
             ansService.updateAnswer(new Answer(ID,type,ans,grade));
             ID++;
         }
-        for(int i = 10;i<20;i++)
+        for(int i = 40;i<60;i++)
         {
             String type = "判断题";
             String ans = answer.get(i);
@@ -42,7 +42,7 @@ public class AnswerController {
             ansService.updateAnswer(new Answer(ID,type,ans,grade));
             ID++;
         }
-        for(int i = 20;i<30;i++)
+        for(int i = 60;i<80;i++)
         {
             String type = "填空题";
             String ans = answer.get(i);
@@ -50,7 +50,7 @@ public class AnswerController {
             ansService.updateAnswer(new Answer(ID,type,ans,grade));
             ID++;
         }
-        for(int i = 30;i<answer.size();i++)
+        for(int i = 80;i<answer.size();i++)
         {
             String type = "简答题";
             String ans = answer.get(i);

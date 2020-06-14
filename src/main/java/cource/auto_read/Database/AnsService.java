@@ -20,6 +20,5 @@ public interface AnsService {
 
     List<Answer> getAnsList();
 
-    List<Answer> getAnsList();
 
 }
