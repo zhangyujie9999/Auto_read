@@ -124,7 +124,7 @@ public class WebOcr {
 	{
 		char [] str1 = str.toCharArray(); 
 		char [] a = new char[1000];
-		char [][] b = new char[2][1000];
+		String [][] b = new String[2][1000];
 		char t='1';
 		int n = 0;
 		int q = 0;
@@ -178,7 +178,7 @@ public class WebOcr {
 										this.type = (p==0)?("choise"):("Tf");
 										this.ll.add(new StuAnswer(ID,this.type,this.answer));
 										ID++;
-										b[p][q++]=str1[k];
+										b[p][q++]=str1[k]+"";
 										t = (char)(((int)t)+1);
 										//System.out.println(t);
 									}
@@ -196,7 +196,7 @@ public class WebOcr {
 							this.type = (p==0)?("choise"):("Tf");
 							this.ll.add(new StuAnswer(ID,this.type,this.answer));
 							ID++;
-							b[p][q++]=' ';
+							b[p][q++]=" ";
 							//a[0]='a';
 							t = (char)(((int)t)+1);
 						}
@@ -211,7 +211,7 @@ public class WebOcr {
 										this.ll.add(new StuAnswer(ID,this.type,this.answer));
 										ID++;
 										//a[n++] = str1[k];
-										b[p][q++]=str1[k];
+										b[p][q++]=str1[k]+"";
 										//a[0]='a';
 										t = (char)(((int)t)+1);
 										//System.out.println(t);
@@ -237,7 +237,7 @@ public class WebOcr {
 							this.type = (p==0)?("choise"):("Tf");
 							this.ll.add(new StuAnswer(ID,this.type,this.answer));
 							ID++;
-							b[p][q++]=' ';
+							b[p][q++]=" ";
 							//a[0]='a';
 							h=h+1;
 							//System.out.println("h1="+h);
@@ -254,7 +254,7 @@ public class WebOcr {
 										this.type = (p==0)?("choise"):("Tf");
 										this.ll.add(new StuAnswer(ID,this.type,this.answer));
 										ID++;
-										b[p][q++]=str1[k];
+										b[p][q++]=str1[k]+"";
 										//a[0]='a';
 										h=h+1;
 										//System.out.println("h2="+h);
@@ -274,14 +274,14 @@ public class WebOcr {
 }
 		for(int g=end1-1;g>start;g--)
 		{
-		if(isalpha(str1[g]))
+		if(isdigit(str1[g]))
 			{
 			//a[n++] = str1[g];
-				this.answer = str1[g]+"";
+				this.answer = str.substring(g+1,end1);;
 				this.type = (p==0)?("choise"):("Tf");
 				this.ll.add(new StuAnswer(ID,this.type,this.answer));
 				ID++;
-				b[p][q++]=str1[g];
+				b[p][q++]=str.substring(g+1,end1);
 				break;
 			}
 		}
