@@ -62,4 +62,11 @@ public class AnswerController {
         model.addAttribute("answers",answers);
         return "answer";
     }
+
+    @RequestMapping("/result2stu_answer")
+    public String stu_answer(Model model){
+        List<Answer> answers = ansService.getAnsList();
+        model.addAttribute("stu_answer",answers);
+        return "stu_answer";
+    }
 }

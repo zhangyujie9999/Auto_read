@@ -1,10 +1,12 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org"  lang="zh-CN">
 <head>
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <!--<link href="bootstrap-3.3.7-dist/css/bootstrap.min.css" rel="stylesheet">-->
-    <link rel="stylesheet" href="http://cdn.bootcss.com/bootstrap/3.3.0/css/bootstrap.min.css">
-    <title>学生成绩</title>
+    <meta charset="utf-8">
+    <title>系统详细评卷结果</title>
+    <meta content="width=device-width, initial-scale=1.0" name="viewport">
+    <meta content="" name="keywords">
+    <meta content="" name="description">
+
     <!-- Favicons -->
     <link href="/img/favicon.png" rel="icon">
     <link href="/img/apple-touch-icon.png" rel="apple-touch-icon">
@@ -24,9 +26,19 @@
 
     <!-- Main Stylesheet File -->
     <link href="/css/style.css" rel="stylesheet">
+    <style>
+        .container_left input{
+            width: 10%;
+        }
+        #container{
+            display: flex;
+        }
 
+    </style>
 </head>
+
 <body class="answer">
+
 <header id="header">
 
     <div id="topbar">
@@ -54,20 +66,45 @@
     </div>
 </header><!-- #header -->
 <br><br><br><br><br>
-<div class="container">
-    <h1>答题卡</h1>
-    <table class="table table-bordered">
-        <tr>
-            <th>姓名</th>
-            <th>第一题</th>
-            <th>第二题</th>
-            <th>第三题</th>
-            <th>第四题</th>
-        </tr>
-    </table>
+    <div id="container" class="container">
+    <div class="container container_left" style="width: 50%;float: left">
+        <form method="POST" action="/backanswer" enctype="multipart/form-data">
+            <h3>一、选择题</h3>
+            <div class="block1"></div><br>
+
+            <h3>二、判断题</h3>
+            <div class="block2"></div><br>
+
+            <h3>三、填空题</h3>
+            <div class="block3"></div><br>
+
+            <h3>四、简答题</h3>
+            <div class="block4"></div><br>
+
+            <div class="float-right d-lg-block">
+                <div class="button center-block">
+                    <button type="button" class="btn btn-c btn-lg reset">清空</button>
+                    <button type="submit" class="btn btn-save btn-lg">保存</button>
+                    <!--            <button type="button" class="btn btn-primary btn-lg">返回</button>-->
+                </div>
+            </div>
+        </form>
+        <br><br><br>
+        <div class="float-right d-lg-block">
+            <form method="POST" action="/answer2update" class="back">
+                <button type="submit" class="btn btn-back btn-lg">返回</button>
+            </form>
+        </div>
+    </div>
+    <div class="container container_right">
+        <div>
+            <img src="https://ss1.bdstatic.com/70cFvXSh_Q1YnxGkpoWK1HF6hhy/it/u=1594191518,2147735963&amp;fm=26&amp;gp=0.jpg" alt="试卷">
+        </div>
+    </div>
 </div>
 
 <br><br><br>
+
 <!--==========================
   Footer
 ============================-->
@@ -114,23 +151,59 @@
 
 <script src="https://cdn.staticfile.org/jquery/1.10.2/jquery.min.js"></script>
 <script src="http://cdn.bootcss.com/bootstrap/3.3.0/js/bootstrap.min.js"></script>
-
-<script>
-    var data_list = {'王二':[10,20,30,10],
-    '李四喜':[10,20,30,10],
-    '赵二妞':[10,20,30,10]};
-    $.each(data_list,function(name,item){
-        console.log(item.length);
-        var td = $("<tr></tr>");
-        td.append("<td class='icon'>" +
-            "<form method='POST' action='/result2stu_answer' class='back'> <button type='submit'>"+
-            name + "</button> </form>"
-            + "</td>");
-        for (var i=0;i<item.length; i++) {
-            td.append("<td class='icon'>" + item[i] + "</td>");
-        }
-        $('.table').append(td);
-    });
-</script>
+<tr th:each="answer : ${stu_answer}">
+    <script th:inline="javascript">
+        console.log('123');
+        //for (var i=0; i<10; i++){
+        if([[${answer.type}]] == "简答题")
+            $('.block4').append('<textarea rows="3" cols="60"  name = "answer" >\n' +
+                [[${answer.answer}]] +
+                '</textarea><br> \n');
+        //$('input').attr('th:placeholder', '123')
+        //}
+        $('.reset').on('click', function () {
+            $("input").val("");
+        })
+    </script>
+</tr>
+<tr th:each="answer : ${stu_answer}">
+    <script th:inline="javascript">
+        console.log('123');
+        //for (var i=0; i<10; i++){
+        if([[${answer.type}]] == "选择题")
+            $('.block1').append('<span><input type="text" name = "answer" th:text="" value=[[${answer.answer}]]></span>');
+        //$('input').attr('th:placeholder', '123')
+        //}
+        $('.reset').on('click', function () {
+            $("input").val("");
+        })
+    </script>
+</tr>
+<tr th:each="answer : ${stu_answer}">
+    <script th:inline="javascript">
+        console.log('123');
+        //for (var i=0; i<10; i++){
+        if([[${answer.type}]] == "填空题")
+            $('.block2').append('<span><input type="text" name = "answer" th:text="" value=[[${answer.answer}]]></span>');
+        //$('input').attr('th:placeholder', '123')
+        //}
+        $('.reset').on('click', function () {
+            $("input").val("");
+        })
+    </script>
+</tr>
+<tr th:each="answer : ${stu_answer}">
+    <script th:inline="javascript">
+        console.log('123');
+        //for (var i=0; i<10; i++){
+        if([[${answer.type}]] == "判断题")
+            $('.block3').append('<span><input type="text" name = "answer" th:text="" value=[[${answer.answer}]]></span>');
+        //$('input').attr('th:placeholder', '123')
+        //}
+        $('.reset').on('click', function () {
+            $("input").val("");
+        })
+    </script>
+</tr>
 </body>
 </html>

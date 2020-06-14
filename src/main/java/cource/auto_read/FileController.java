@@ -104,4 +104,9 @@ public class FileController {
         return "uploadStatus";
     }
 
+//    @RequestMapping("/result2stu_answer")
+//    public String result2stu_answer(){
+//        return "stu_answer";
+//    }
+
 }
