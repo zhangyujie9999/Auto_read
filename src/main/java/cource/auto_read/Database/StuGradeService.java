@@ -13,7 +13,7 @@ public interface StuGradeService {
     /*
      修改学生成绩
     * */
-    void updateGrde(StuGrade s_grade);
+    void updateGrade(StuGrade s_grade);
 
     /*
     返回指定学生成绩

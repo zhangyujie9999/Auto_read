@@ -9,23 +9,23 @@ import org.springframework.boot.test.context.SpringBootTest;
 
 import java.util.List;
 
-@SpringBootTest
-public class AnsServiceTest {
-    @Autowired
-//    private AnsServiceimpl ansService;
-    @Test
-    public void check1(){
-        Answer ans=new Answer();
-        ans.setID(1);
-        ans.setAnswer("A");
-        ans.setGrade(1);
-        AnsServiceimpl ansService=new AnsServiceimpl();
-        ansService.updateAnswer(ans);
-}
-//    public void check2(){
-//        AnsServiceimpl ansServiceimpl=new AnsServiceimpl();
-//        List<Answer> ans1=ansServiceimpl.findAnswer(1);
-//    }
-
-
-}
+//@SpringBootTest
+//public class AnsServiceTest {
+//    @Autowired
+////    private AnsServiceimpl ansService;
+//    @Test
+////    public void check1(){
+////        Answer ans=new Answer();
+////        ans.setID(1);
+////        ans.setAnswer("A");
+////        ans.setGrade(1);
+////        AnsServiceimpl ansService=new AnsServiceimpl();
+////        ansService.updateAnswer(ans);
+//}
+////    public void check2(){
+////        AnsServiceimpl ansServiceimpl=new AnsServiceimpl();
+////        List<Answer> ans1=ansServiceimpl.findAnswer(1);
+////    }
+//
+//
+//}

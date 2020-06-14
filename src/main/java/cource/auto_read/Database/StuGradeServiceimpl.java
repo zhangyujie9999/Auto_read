@@ -16,12 +16,12 @@ public class StuGradeServiceimpl implements StuGradeService{
     }
 
     @Override
-    public void updateGrde(StuGrade s_grade){
-        stu_grademapper.updateGrde(s_grade);
+    public void updateGrade(StuGrade s_grade){
+        stu_grademapper.updateGrade(s_grade);
     }
 
     @Override
-    public List<StuGrade> selectGradebyID(int stu_ID){
+    public List<StuGrade> selectGradebyID(String stu_ID){
         List<StuGrade> s_grade = stu_grademapper.selectGradebyID(stu_ID);
         return s_grade;
     }
