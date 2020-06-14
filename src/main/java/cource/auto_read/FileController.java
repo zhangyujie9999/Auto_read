@@ -1,8 +1,15 @@
 package cource.auto_read;
 
 import Algorithm.Read_allpic;
+import Algorithm.TotalScore;
 import Algorithm.Unzip;
+import Algorithm.WebOcr;
 import cource.auto_read.Database.AnsServiceimpl;
+import cource.auto_read.Database.StuGradeService;
+import cource.auto_read.Database.StuGradeServiceimpl;
+import cource.auto_read.Database.StuServiceimpl;
+import javabean.StuAnswer;
+import javabean.StuGrade;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
@@ -14,6 +21,7 @@ import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
+import java.text.ParseException;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -22,6 +30,8 @@ import java.util.Map;
 public class FileController {
     @Autowired
     AnsServiceimpl ansService;
+    @Autowired
+    StuGradeServiceimpl stuGradeService;
     private static final String UPLOADED_FOLDER = "/home/wawade3/下载/up/";
     @RequestMapping("")
     public String update(){
@@ -72,8 +82,17 @@ public class FileController {
             String dirname = file.getOriginalFilename().substring(0,file.getOriginalFilename().length()-4);
             List<String> piclist = Read_allpic.all_pic(UPLOADED_FOLDER + dirname);
             System.out.println("aaa");
+            WebOcr webOcr = new WebOcr();
+            stuGradeService.delete();
+            for (int i = 0;i<piclist.size();i++){
+                List<StuAnswer> stuAnswers = webOcr.read(piclist.get(i));
+//                List<Double> scores = TotalScore.ComputeTotalScore(stuAnswers, ansService.getAnsList());
+//                stuGradeService.addGrade(new StuGrade("", "",scores.get(0), 0.0,
+//                        scores.get(1), scores.get(2), scores.get(3), scores.get(4)));
+//                System.out.println("");
+            }
 
-        } catch (IOException e) {
+        } catch (IOException | ParseException e) {
             e.printStackTrace();
         }
         return "redirect:";

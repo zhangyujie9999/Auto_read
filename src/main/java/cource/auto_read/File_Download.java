@@ -16,7 +16,7 @@ public class File_Download {
                                HttpServletResponse response) throws UnsupportedEncodingException {
 
         // 获取指定目录下的第一个文件
-        File scFileDir = new File("/home/wawade3/下载/tain_ply");
+        File scFileDir = new File("/home/wawade3/下载/down");
         File TrxFiles[] = scFileDir.listFiles();
         System.out.println(TrxFiles[0]);
         String fileName = TrxFiles[0].getName(); //下载的文件名
@@ -24,7 +24,7 @@ public class File_Download {
         // 如果文件名不为空，则进行下载
         if (fileName != null) {
             //设置文件路径
-            String realPath = "/home/wawade3/下载/tain_ply/";
+            String realPath = "/home/wawade3/下载/down/";
             File file = new File(realPath, fileName);
 
             // 如果文件名存在，则进行下载

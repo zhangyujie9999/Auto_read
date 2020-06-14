@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
 import java.util.List;
+@Repository
 public class StuGradeServiceimpl implements StuGradeService{
     @Autowired
     private StuGradeMapper stu_grademapper;
@@ -30,6 +31,11 @@ public class StuGradeServiceimpl implements StuGradeService{
     public List<StuGrade> selectAllGrade(){
         List<StuGrade> s_grade = stu_grademapper.selectAllGrade();
         return s_grade;
+    }
+
+    @Override
+    public void delete() {
+        stu_grademapper.delete();
     }
 
 }

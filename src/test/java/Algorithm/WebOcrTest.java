@@ -14,7 +14,7 @@ class WebOcrTest {
     @Test
     void read() throws IOException, ParseException {
         WebOcr webOcr = new WebOcr();
-        List<StuAnswer> stuAnswers =  webOcr.read("E:\\coding\\auto_read\\01.png");
+        List<StuAnswer> stuAnswers =  webOcr.read("/home/wawade3/下载/tain_ply/webwxgetmsgimg");
         System.out.println("");
     }
 }

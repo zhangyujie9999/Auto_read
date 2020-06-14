@@ -32,4 +32,7 @@ public interface StuGradeMapper {
 
     @Select("Select * from StuGrade order by stu_ID ")
     List<StuGrade> selectAllGrade();
+
+    @Update("truncate table StuGrade")
+    void delete();
 }

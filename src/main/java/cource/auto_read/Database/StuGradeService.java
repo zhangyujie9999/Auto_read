@@ -4,6 +4,7 @@ import javabean.StuGrade;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+@Service
 public interface StuGradeService {
     /*
      保存学生成绩至数据库
@@ -24,4 +25,6 @@ public interface StuGradeService {
     返回所有学生成绩
     * */
     List<StuGrade> selectAllGrade();
+
+    void delete();
 }
