@@ -114,23 +114,45 @@
 
 <script src="https://cdn.staticfile.org/jquery/1.10.2/jquery.min.js"></script>
 <script src="http://cdn.bootcss.com/bootstrap/3.3.0/js/bootstrap.min.js"></script>
-
-<script th:inline="javascript">
-    var data_list = {'王二':[10,20,30,10],
-    '李四喜':[10,20,30,10],
-    '赵二妞':[10,20,30,10]};
-    $.each(data_list,function(name,item){
-        console.log(item.length);
+<script>
+    var data_list = {};
+</script>
+<tr th:each="stuGrade : ${stuGrades}">
+    <script th:inline="javascript">
+        // console.log('data_list', data_list);
+        // console.log('stuGrade', [[${stuGrade.stu_Name}]]);
+        // data_list['[${stuGrade.stu_Name}]'] = [[${stuGrade.stu_Name}], 0, 0, 0];
+        //
+        //-------------
+        var id = [[${stuGrade.stu_ID}]];
         var td = $("<tr></tr>");
         td.append("<td class='icon'>" +
-            "<form method='POST' action='/result2stu_answer' class='back'> <button type='submit'>"+
-            name + "</button> </form>"
+            "<a href=/result2stu_answer?stuid="+id+">"+
+            [[${stuGrade.stu_Name}]] + ""
             + "</td>");
-        for (var i=0;i<item.length; i++) {
-            td.append("<td class='icon'>" + item[i] + "</td>");
-        }
+        td.append("<td class='icon'>" + [[${stuGrade.s_choice}]] + "</td>");
+        td.append("<td class='icon'>" + [[${stuGrade.judge}]] + "</td>");
+        td.append("<td class='icon'>" + [[${stuGrade.t_kong}]] + "</td>");
+        td.append("<td class='icon'>" + [[${stuGrade.Q_A}]] + "</td>");
+        // for (var i=0;i<item.length; i++) {
+        //     td.append("<td class='icon'>" + item[i] + "</td>");
+        // }
         $('.table').append(td);
-    });
-</script>
+
+    </script>
+<!--<script th:inline="javascript">-->
+<!--    $.each(data_list,function(name,item){-->
+<!--        console.log(item.length);-->
+<!--        var td = $("<tr></tr>");-->
+<!--        td.append("<td class='icon'>" +-->
+<!--            "<form method='POST' action='/result2stu_answer' class='back'> <button type='submit'>"+-->
+<!--            name + "</button> </form>"-->
+<!--            + "</td>");-->
+<!--        for (var i=0;i<item.length; i++) {-->
+<!--            td.append("<td class='icon'>" + item[i] + "</td>");-->
+<!--        }-->
+<!--        $('.table').append(td);-->
+<!--    });-->
+<!--</script>-->
 </body>
 </html>

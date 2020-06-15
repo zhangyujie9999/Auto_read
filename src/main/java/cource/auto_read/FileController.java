@@ -12,19 +12,24 @@ import javabean.StuAnswer;
 import javabean.StuGrade;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartException;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import java.io.IOException;
+import java.lang.reflect.Array;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.text.ParseException;
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 @Controller
 public class FileController {
@@ -86,10 +91,19 @@ public class FileController {
             stuGradeService.delete();
             for (int i = 0;i<piclist.size();i++){
                 List<StuAnswer> stuAnswers = webOcr.read(piclist.get(i));
-//                List<Double> scores = TotalScore.ComputeTotalScore(stuAnswers, ansService.getAnsList());
-//                stuGradeService.addGrade(new StuGrade("", "",scores.get(0), 0.0,
-//                        scores.get(1), scores.get(2), scores.get(3), scores.get(4)));
-//                System.out.println("");
+                List<Double> scores = TotalScore.ComputeTotalScore(stuAnswers, ansService.getAnsList());
+                String[] split = piclist.get(i).split("/");
+                String ss = split[split.length - 1];
+                Pattern p = Pattern.compile("[\\u4e00-\\u9fa5]+|\\d+");
+                Matcher m = p.matcher(ss);
+                List <String> news = new ArrayList<>();
+                while ( m.find() ) {
+                    System.out.println(m.group());
+                    news.add(m.group());
+                }
+                stuGradeService.addGrade(new StuGrade(news.get(1), news.get(0),scores.get(0), 0.0,
+                        scores.get(1), scores.get(2), scores.get(3), scores.get(4), piclist.get(i)));
+                System.out.println("");
             }
 
         } catch (IOException | ParseException e) {
@@ -107,7 +121,9 @@ public class FileController {
         }
     }
     @RequestMapping("/result")
-    public String result(){
+    public String result(Model model){
+        List<StuGrade> stuGrades = stuGradeService.selectAllGrade();
+        model.addAttribute("stuGrades", stuGrades);
         return "result";
     }
     @RequestMapping("/fail2update")

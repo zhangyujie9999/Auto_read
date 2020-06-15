@@ -68,7 +68,7 @@
 <br><br><br><br><br>
     <div id="container" class="container">
     <div class="container container_left" style="width: 50%;float: left">
-        <form method="POST" action="/backanswer" enctype="multipart/form-data">
+        <form method="POST" action="/result" enctype="multipart/form-data">
             <h3>一、选择题</h3>
             <div class="block1"></div><br>
 
@@ -98,7 +98,8 @@
     </div>
     <div class="container container_right">
         <div>
-            <img src="https://ss1.bdstatic.com/70cFvXSh_Q1YnxGkpoWK1HF6hhy/it/u=1594191518,2147735963&amp;fm=26&amp;gp=0.jpg" alt="试卷">
+<!--            <img src="https://ss1.bdstatic.com/70cFvXSh_Q1YnxGkpoWK1HF6hhy/it/u=1594191518,2147735963&amp;fm=26&amp;gp=0.jpg" alt="试卷">-->
+            <img th:src="${path}" alt="试卷">
         </div>
     </div>
 </div>
@@ -156,7 +157,7 @@
         console.log('123');
         //for (var i=0; i<10; i++){
         if([[${answer.type}]] == "简答题")
-            $('.block4').append('<textarea rows="3" cols="60"  name = "answer" >\n' +
+            $('.block4').append('<textarea rows="1" cols="50"  name = "answer" >\n' +
                 [[${answer.answer}]] +
                 '</textarea><br> \n');
         //$('input').attr('th:placeholder', '123')
@@ -183,7 +184,7 @@
     <script th:inline="javascript">
         console.log('123');
         //for (var i=0; i<10; i++){
-        if([[${answer.type}]] == "填空题")
+        if([[${answer.type}]] == "判断题")
             $('.block2').append('<span><input type="text" name = "answer" th:text="" value=[[${answer.answer}]]></span>');
         //$('input').attr('th:placeholder', '123')
         //}
@@ -196,7 +197,7 @@
     <script th:inline="javascript">
         console.log('123');
         //for (var i=0; i<10; i++){
-        if([[${answer.type}]] == "判断题")
+        if([[${answer.type}]] == "填空题")
             $('.block3').append('<span><input type="text" name = "answer" th:text="" value=[[${answer.answer}]]></span>');
         //$('input').attr('th:placeholder', '123')
         //}

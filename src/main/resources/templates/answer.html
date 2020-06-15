@@ -177,7 +177,7 @@
     <script th:inline="javascript">
         console.log('123');
         //for (var i=0; i<10; i++){
-        if([[${answer.type}]] == "填空题")
+        if([[${answer.type}]] == "判断题")
             $('.block2').append('<span><input type="text" name = "answer" th:text="" value=[[${answer.answer}]]></span>');
         //$('input').attr('th:placeholder', '123')
         //}
@@ -190,7 +190,7 @@
     <script th:inline="javascript">
         console.log('123');
         //for (var i=0; i<10; i++){
-        if([[${answer.type}]] == "判断题")
+        if([[${answer.type}]] == "填空题")
             $('.block3').append('<span><input type="text" name = "answer" th:text="" value=[[${answer.answer}]]></span>');
         //$('input').attr('th:placeholder', '123')
         //}

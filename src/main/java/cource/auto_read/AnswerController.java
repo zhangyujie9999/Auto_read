@@ -1,7 +1,11 @@
 package cource.auto_read;
 
+import Algorithm.WebOcr;
 import cource.auto_read.Database.AnsServiceimpl;
+import cource.auto_read.Database.StuGradeServiceimpl;
 import javabean.Answer;
+import javabean.StuAnswer;
+import javabean.StuGrade;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -9,12 +13,15 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
+import java.io.IOException;
+import java.text.ParseException;
 import java.util.List;
 @Controller
 public class AnswerController {
     @Autowired
     AnsServiceimpl ansService;
-
+    @Autowired
+    StuGradeServiceimpl stuGradeService;
     @RequestMapping("/answer")
     public String answer(Model model){
         List<Answer> answers = ansService.getAnsList();
@@ -64,9 +71,22 @@ public class AnswerController {
     }
 
     @RequestMapping("/result2stu_answer")
-    public String stu_answer(Model model){
+    public String stu_answer(Model model, String stuid) throws IOException, ParseException {
+        WebOcr webOcr = new WebOcr();
+        StuGrade nowstu = stuGradeService.selectGradebyID(stuid);
+        List<StuAnswer> stuAnswers = webOcr.read(nowstu.getPath());
         List<Answer> answers = ansService.getAnsList();
+        for(int i = 0;i<stuAnswers.size();i++) {
+            answers.get(i).setAnswer(stuAnswers.get(i).getAnswer());
+        }
+        model.addAttribute("path",nowstu.getPath() + "jpeg");
+        model.addAttribute("stuid","/backanswer?stuid="+stuid);
         model.addAttribute("stu_answer",answers);
         return "stu_answer";
+    }
+    @RequestMapping("/backanswer")
+    public String backanswer(String stuid){
+        stuGradeService.selectGradebyID(stuid);
+        return "result";
     }
 }

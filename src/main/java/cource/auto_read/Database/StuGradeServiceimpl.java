@@ -22,8 +22,8 @@ public class StuGradeServiceimpl implements StuGradeService{
     }
 
     @Override
-    public List<StuGrade> selectGradebyID(String stu_ID){
-        List<StuGrade> s_grade = stu_grademapper.selectGradebyID(stu_ID);
+    public StuGrade selectGradebyID(String stu_ID){
+        StuGrade s_grade = stu_grademapper.selectGradebyID(stu_ID);
         return s_grade;
     }
 
