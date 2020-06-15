@@ -26,12 +26,15 @@ public class WebOcr {
 	// 接口密钥(webapi类型应用开通手写文字识别后，控制台--我的应用---手写文字识别---相应服务的apikey)
 	private static final String TEST_API_KEY = "713642d7d81909c8c8e64704fcf51287";
 	// 测试图片文件存放位置
-	private static final String IMAGE_FILE_PATH = "C://Users/19554/Desktop/5.png";
+	private static final String IMAGE_FILE_PATH = "C://Users//19554//Desktop//5.png";
 
 	public int ID;
 	public String answer;
 	public String type;
 	List<StuAnswer> ll = new ArrayList<>();
+	public static void main(String[] args){
+
+	}
 	/**
 	 * 组装http请求头
 	 * 
@@ -96,22 +99,34 @@ public class WebOcr {
 
 		}
 		System.out.println(str);
-		this.choice(str);
+		//this.choice(str);
 		int end2_=0;
 		int end3=0;
 		char [] str3 = str.toCharArray();
 		for(int i=0;i<str3.length;i++)
 		{
 
-			if(str3[i]=='三')
-				end2_ = i;
-			if(str3[i]=='四')
-				end3 = i;
+			if(str3[i]=='三'||str3[i]=='③')
+			{end2_ = i;
+				break;
+			}
 
 		}
+		for(int i=0;i<str3.length;i++)
+		{
+			if(str3[i]=='四'||str3[i]=='④')
+			{end3 = i;
+				break;
+			}
+		}
+		String str5 = str.substring(0, end2_+1);
+		this.choice(str5);
 		String str2 = str.substring(end2_, end3);
 
-		tk(str2);
+		this.tk(str2);
+		String str4= str.substring(end3);
+		System.out.println();
+		this.jd(str4);
 
 
 		//System.out.println(result.substring(start,end+1));
@@ -135,17 +150,37 @@ public class WebOcr {
 		int start=0;
 		int end1=0;
 		int end2=0;
-		
+		String str2 = "";
+
 		for(int i=0;i<str1.length;i++)
 		{
-			if(str1[i]=='一')
+			if(str1[i]=='一'||str1[i]=='①')
+			{
 				start = i;
-			if(str1[i]=='二')
-				end1 = i;
-			if(str1[i]=='三')
-				end2 = i;
-			
-			
+				break;
+
+			}
+
+		}
+		for(int i=0;i<str1.length;i++)
+		{
+
+			if(str1[i]=='二'||str1[i]=='②')
+			{end1 = i;
+				break;
+
+			}
+
+		}
+		for(int i=0;i<str1.length;i++)
+		{
+
+			if(str1[i]=='三'||str1[i]=='③')
+			{end2 = i;
+				break;
+
+			}
+
 		}
 //		System.out.println(start);
 //		System.out.println(end1);
@@ -196,7 +231,7 @@ public class WebOcr {
 							this.type = (p==0)?("choise"):("Tf");
 							this.ll.add(new StuAnswer(ID,this.type,this.answer));
 							ID++;
-							b[p][q++]=" ";
+							b[p][q++]="";
 							//a[0]='a';
 							t = (char)(((int)t)+1);
 						}
@@ -244,28 +279,41 @@ public class WebOcr {
 						}
 						label:for(int j=i+2;j<end1;j++)
 							{
-							if(isdigit(str1[j]))
-								{
-								for(int k=i+1;k<j;k++)
-									if(isalpha(str1[k]))
-									{
+							if(isdigit(str1[j])) {
+								for (int k = i + 1; k < j; k++) {
+									if (isalpha(str1[k]) && isalpha(str1[k + 1])) {
 										//a[n++] = str1[k];
+										str2 = str.substring(k, j);
+										this.answer = str2;
+										this.type = (p == 0) ? ("choise") : ("Tf");
+										this.ll.add(new StuAnswer(ID, this.type, this.answer));
+										ID++;
+										b[p][q++] = str2;
+										//a[0]='a';
+										h = h + 1;
+										//System.out.println("h2="+h);
+										break label;
+
+									}
+									if (isalpha(str1[k])) {
+										//a[n++] = str1[k];
+
 										this.answer = str1[k]+"";
-										this.type = (p==0)?("choise"):("Tf");
-										this.ll.add(new StuAnswer(ID,this.type,this.answer));
+										this.type = (p == 0) ? ("choise") : ("Tf");
+										this.ll.add(new StuAnswer(ID, this.type, this.answer));
 										ID++;
 										b[p][q++]=str1[k]+"";
 										//a[0]='a';
-										h=h+1;
+										h = h + 1;
 										//System.out.println("h2="+h);
 										break label;
-										
+
 									}
-								
-						     
-								}	
-							
-							
+
+
+								}
+
+							}
 							}
 						i=i+2;
 						
@@ -331,11 +379,14 @@ public class WebOcr {
 
 
 			}
-		for(int i=0;i<k-1;)
+		for(int i=0;i<k-2;)
 		{   a[i]=a[i]+1;
 			if(str2[a[i]]=='.'||str2[a[i]]=='、')
 				a[i]=a[i]+1;
-			str3=str.substring(a[i], a[i+1]);
+			if(a[i]<a[i+1])
+			{
+			str3=str.substring(a[i], a[i+1]);}
+			else break;
 			str1[n++]=str3;
 			str3="";
 			i=i+2;
@@ -358,7 +409,55 @@ public class WebOcr {
 			}
 		
 	}
-	
+	public  void jd(String str) {
+		char [] str2 = str.toCharArray();
+		String [] c = new String[6];
+		int i;
+		int j;
+		int k=0;
+		label:for(i=0;i<str2.length ;i++)
+		{
+			if(isdigit(str2[i]))
+			{
+				for(j=i+1;j<str2.length ;j++)
+				{
+					if(isdigit(str2[j]))
+					{
+						String str3 = str.substring(i, j);
+						//System.out.println(str3);
+						c[k++]=str3;
+						this.answer = str3;
+						this.type = "JD";
+						this.ll.add(new StuAnswer(ID,this.type,this.answer));
+						ID++;
+						break ;
+
+
+					}
+				}
+			}
+		}
+		for(i=str2.length-1;i>0 ;i--)
+		{
+			if(isdigit(str2[i]))
+			{
+				String str3 = str.substring(i);
+				c[k++]=str3;
+				this.answer = str3;
+				this.type = "JD";
+				this.ll.add(new StuAnswer(ID,this.type,this.answer));
+				ID++;
+				break ;
+			}
+		}
+		for(i=0;i<k ;i++)
+		{
+			System.out.println(c[i]);
+
+		}
+
+
+	}
 	public static boolean isdigit(char ch)
 	{
 		if(ch>=48&&ch<=57)
