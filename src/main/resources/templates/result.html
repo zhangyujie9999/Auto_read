@@ -1,10 +1,12 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org"  lang="zh-CN">
 <head>
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <!--<link href="bootstrap-3.3.7-dist/css/bootstrap.min.css" rel="stylesheet">-->
-    <link rel="stylesheet" href="http://cdn.bootcss.com/bootstrap/3.3.0/css/bootstrap.min.css">
+    <meta charset="utf-8">
     <title>学生成绩</title>
+    <meta content="width=device-width, initial-scale=1.0" name="viewport">
+    <meta content="" name="keywords">
+    <meta content="" name="description">
+
     <!-- Favicons -->
     <link href="/img/favicon.png" rel="icon">
     <link href="/img/apple-touch-icon.png" rel="apple-touch-icon">
@@ -26,7 +28,9 @@
     <link href="/css/style.css" rel="stylesheet">
 
 </head>
+
 <body class="answer">
+
 <header id="header">
 
     <div id="topbar">
@@ -54,17 +58,18 @@
     </div>
 </header><!-- #header -->
 <br><br><br><br><br>
-<div class="container">
-    <h1>答题卡</h1>
-    <table class="table table-bordered">
-        <tr>
-            <th>姓名</th>
-            <th>第一题</th>
-            <th>第二题</th>
-            <th>第三题</th>
-            <th>第四题</th>
-        </tr>
-    </table>
+
+<div id="ha" class="container">
+    <h3>答题卡</h3>
+        <table class="table table-bordered">
+            <tr>
+                <th>姓名</th>
+                <th>第一题</th>
+                <th>第二题</th>
+                <th>第三题</th>
+                <th>第四题</th>
+            </tr>
+        </table>
 </div>
 
 <br><br><br>
@@ -140,6 +145,18 @@
         $('.table').append(td);
 
     </script>
+</tr>
+<script language="javascript">
+    var ss;
+    window.onload=function()
+        {
+            var w=document.documentElement.clientWidth ;//可见区域宽度bai
+            var h=document.documentElement.clientHeight;//可见区域高度
+            ss=document.getElementById('ha');
+            //alert(w)
+            ss.style.height=h+"px";
+        }
+</script>
 <!--<script th:inline="javascript">-->
 <!--    $.each(data_list,function(name,item){-->
 <!--        console.log(item.length);-->
