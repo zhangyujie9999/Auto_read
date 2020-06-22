@@ -37,7 +37,7 @@ public class FileController {
     AnsServiceimpl ansService;
     @Autowired
     StuGradeServiceimpl stuGradeService;
-    private static final String UPLOADED_FOLDER = "/home/wawade3/下载/up/";
+    private static final String UPLOADED_FOLDER = "target/classes/static/up/";
     @RequestMapping("")
     public String update(){
         return "homepage";
@@ -122,6 +122,28 @@ public class FileController {
     }
     @RequestMapping("/result")
     public String result(Model model){
+        List<StuGrade> stuGrades = stuGradeService.selectAllGrade();
+        model.addAttribute("stuGrades", stuGrades);
+        return "result";
+    }
+    @RequestMapping("/back2result")
+    public String back2result(Model model, @RequestParam("answer") List<String> answer, String path){
+        List<StuAnswer> stuAnswers = new ArrayList<>();
+        for(int i = 0;i<answer.size();i++){
+            stuAnswers.add(new StuAnswer(i, "", answer.get(i)));
+        }
+        String[] ss = path.split("/");
+        String[] nn = ss[3].split("\\.");
+        Pattern p = Pattern.compile("[\\u4e00-\\u9fa5]+|\\d+");
+        Matcher m = p.matcher(nn[0]);
+        List <String> news = new ArrayList<>();
+        while ( m.find() ) {
+            System.out.println(m.group());
+            news.add(m.group());
+        }
+        List <Double> scores = TotalScore.ComputeTotalScore(stuAnswers, ansService.getAnsList());
+        stuGradeService.updateGrade(new StuGrade(news.get(1), news.get(0), scores.get(0), 0.0,
+                scores.get(1), scores.get(2), scores.get(3), scores.get(4), "target/classes/static/" + ss[1] + "/" + ss[2] + "/" + ss[3]));
         List<StuGrade> stuGrades = stuGradeService.selectAllGrade();
         model.addAttribute("stuGrades", stuGrades);
         return "result";

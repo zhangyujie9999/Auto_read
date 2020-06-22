@@ -19,12 +19,12 @@ public interface StuGradeMapper {
 
     @Update("update StuGrade set "
             + "s_choice = #{s_choice}, "
-            + "m_choice = #{m_choice}  "
-            + "judge = #{judge}  "
-            + "t_kong = #{t_kong}  "
-            + "Q_A = #{Q_A}  "
-            + "grade = #{grade}  "
-            + "path = #{path}"
+            + "m_choice = #{m_choice},  "
+            + "judge = #{judge},  "
+            + "t_kong = #{t_kong},  "
+            + "Q_A = #{Q_A},  "
+            + "grade = #{grade},  "
+            + "path = #{path} "
             + "where stu_ID = #{stu_ID} ")
     void updateGrade(StuGrade s_grade);
 

@@ -49,7 +49,7 @@ public class AnswerController {
             ansService.updateAnswer(new Answer(ID,type,ans,grade));
             ID++;
         }
-        for(int i = 60;i<80;i++)
+        for(int i = 60;i<70;i++)
         {
             String type = "填空题";
             String ans = answer.get(i);
@@ -57,7 +57,7 @@ public class AnswerController {
             ansService.updateAnswer(new Answer(ID,type,ans,grade));
             ID++;
         }
-        for(int i = 80;i<answer.size();i++)
+        for(int i = 70;i<answer.size();i++)
         {
             String type = "简答题";
             String ans = answer.get(i);
@@ -76,17 +76,22 @@ public class AnswerController {
         StuGrade nowstu = stuGradeService.selectGradebyID(stuid);
         List<StuAnswer> stuAnswers = webOcr.read(nowstu.getPath());
         List<Answer> answers = ansService.getAnsList();
-        for(int i = 0;i<stuAnswers.size();i++) {
+        for(int i = 0;i<75;i++) {
             answers.get(i).setAnswer(stuAnswers.get(i).getAnswer());
         }
-        model.addAttribute("path",nowstu.getPath() + "jpeg");
+        String[] paths = nowstu.getPath().split("/");
+        model.addAttribute("path","/" + paths[3] + "/" + paths[4] + "/" + paths[5]);
         model.addAttribute("stuid","/backanswer?stuid="+stuid);
         model.addAttribute("stu_answer",answers);
         return "stu_answer";
     }
-    @RequestMapping("/backanswer")
+    @RequestMapping("/backanswer2")
     public String backanswer(String stuid){
         stuGradeService.selectGradebyID(stuid);
         return "result";
+    }
+    @RequestMapping("/back")
+    public String back(){
+        return "homepage";
     }
 }

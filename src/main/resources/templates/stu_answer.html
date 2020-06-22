@@ -68,7 +68,7 @@
 <br><br><br><br><br>
     <div id="container" class="container">
     <div class="container container_left" style="width: 50%;float: left">
-        <form method="POST" action="/result" enctype="multipart/form-data">
+        <form method="POST" action="/back2result?path=" enctype="multipart/form-data">
             <h3>一、选择题</h3>
             <div class="block1"></div><br>
 
@@ -90,16 +90,17 @@
             </div>
         </form>
         <br><br><br>
+
+    </div>
         <div class="float-right d-lg-block">
             <form method="POST" action="/answer2update" class="back">
                 <button type="submit" class="btn btn-back btn-lg">返回</button>
             </form>
         </div>
-    </div>
     <div class="container container_right">
         <div>
 <!--            <img src="https://ss1.bdstatic.com/70cFvXSh_Q1YnxGkpoWK1HF6hhy/it/u=1594191518,2147735963&amp;fm=26&amp;gp=0.jpg" alt="试卷">-->
-            <img th:src="${path}" alt="试卷">
+            <img th:src="${path}" alt="试卷" style="width:100%">
         </div>
     </div>
 </div>
@@ -154,7 +155,6 @@
 <script src="http://cdn.bootcss.com/bootstrap/3.3.0/js/bootstrap.min.js"></script>
 <tr th:each="answer : ${stu_answer}">
     <script th:inline="javascript">
-        console.log('123');
         //for (var i=0; i<10; i++){
         if([[${answer.type}]] == "简答题")
             $('.block4').append('<textarea rows="1" cols="50"  name = "answer" >\n' +
@@ -169,7 +169,6 @@
 </tr>
 <tr th:each="answer : ${stu_answer}">
     <script th:inline="javascript">
-        console.log('123');
         //for (var i=0; i<10; i++){
         if([[${answer.type}]] == "选择题")
             $('.block1').append('<span><input type="text" name = "answer" th:text="" value=[[${answer.answer}]]></span>');
@@ -182,7 +181,6 @@
 </tr>
 <tr th:each="answer : ${stu_answer}">
     <script th:inline="javascript">
-        console.log('123');
         //for (var i=0; i<10; i++){
         if([[${answer.type}]] == "判断题")
             $('.block2').append('<span><input type="text" name = "answer" th:text="" value=[[${answer.answer}]]></span>');
@@ -195,7 +193,6 @@
 </tr>
 <tr th:each="answer : ${stu_answer}">
     <script th:inline="javascript">
-        console.log('123');
         //for (var i=0; i<10; i++){
         if([[${answer.type}]] == "填空题")
             $('.block3').append('<span><input type="text" name = "answer" th:text="" value=[[${answer.answer}]]></span>');
@@ -206,5 +203,10 @@
         })
     </script>
 </tr>
+<script>
+    var action = "/back2result?path="
+    var path = $('.container.container_right img').attr('src');
+    $('#container .container form').attr('action', action+path);
+</script>
 </body>
 </html>
