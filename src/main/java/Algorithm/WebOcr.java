@@ -26,7 +26,7 @@ public class WebOcr {
 	// 接口密钥(webapi类型应用开通手写文字识别后，控制台--我的应用---手写文字识别---相应服务的apikey)
 	private static final String TEST_API_KEY = "713642d7d81909c8c8e64704fcf51287";
 	// 测试图片文件存放位置
-	private static final String IMAGE_FILE_PATH = "C://Users//19554//Desktop//5.png";
+	private static final String IMAGE_FILE_PATH = "C://Users//19554//Desktop//6.jpg";
 
 	public int ID;
 	public String answer;
@@ -422,7 +422,8 @@ public class WebOcr {
 				for(j=i+1;j<str2.length ;j++)
 				{
 					if(isdigit(str2[j]))
-					{
+					{   if((str2[i]-'0')==(str2[j]-'0'))
+					{break;}
 						String str3 = str.substring(i, j);
 						//System.out.println(str3);
 						c[k++]=str3;
